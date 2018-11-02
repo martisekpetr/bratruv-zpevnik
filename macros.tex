@@ -1,0 +1,94 @@
+% typeset song title, add to ToC
+\newcommand{\songTitle}[1]{%
+  \begin{spacing}{1.5}
+    {\Huge\sffamily\bfseries\MakeUppercase{#1}}
+  \end{spacing}%
+  % add song name to ToC (truncate if necessary)
+  % \noindent\addcontentsline{lem}{song}{\truncate{0.5\textwidth}{#1}}
+  % for use of tagged toc with package tableof
+  \noindent\addcontentsline{toc}{song}{\truncate{0.5\textwidth}{#1}}
+}
+
+% author name
+\renewcommand{\author}[1]{
+  \hskip -10pt
+  {\LARGE\sffamily\slshape #1}
+}
+
+% verse number before lyrics
+\renewcommand{\verse}[1]{
+  \hskip -20pt
+  \scalebox{.9}[1.0]{\LARGE\bfseries #1.}
+  \hskip 4pt 
+}
+
+% `R:' before lyrics
+\newcommand{\chorus}{
+  \hskip -23pt \textbf{R:}\hskip 5pt
+}
+
+% beginning of repeat
+\newcommand{\revrpt}{
+  \raisebox{-.4ex}{\rule{.3ex}{2.5ex}\,\rule{.1ex}{2.5ex}}%
+  \raisebox{.2ex}{:}}
+
+% end of repeat
+\newcommand{\rpt}{
+  \raisebox{.2ex}{:}%
+  \raisebox{-.4ex}{\rule{.1ex}{2.5ex}\,\rule{.3ex}{2.5ex}}}
+
+% capo placement
+\newcommand{\capo}[1]{
+  \vskip -10 pt 
+  \hfill \textsl{Capo #1}\\
+}
+
+% optional verse in parenthesis
+\newcommand\optVerse[4]{
+  \hskip #1
+  $\left(
+    \parbox{0.9\textwidth}{
+      \leftskip = #2
+      #4
+    }
+    \hskip #3
+  \right)$
+}
+
+% song
+\newcommand{\song}[5]{
+  \begin{minipage}[c]{\textwidth}
+    \centering
+    \songTitle{#1}
+    \author{#2}
+  \end{minipage} 
+  \begin{center}
+    \leftskip=#3
+    \linespread{#4}\selectfont 
+    #5
+  \end{center} 
+\clearpage
+}
+
+\newcommand{\categoryHeader}[1]{
+  \needspace{5\baselineskip}
+  \begin{center}
+    \hrulefill
+    \bfseries\large
+    \ #1\ 
+    \hrulefill
+  \end{center}
+}
+
+\newcommand{\subcategoryHeader}[1]{
+  \vskip -10pt
+  \needspace{3\baselineskip}
+  \textbf{\normalsize #1}
+  \vskip -5pt
+}
+
+\newcommand{\categoryToc}[2]{
+  \etocmulticolstyle[1]{\subcategoryHeader{#1}}
+  \nexttocwithtags*{#2}{}
+  \tableofcontents
+}

@@ -1,5 +1,9 @@
 # Created by https://www.gitignore.io/api/latex
 
+old/
+
+.vscode/
+
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:
 *.aux

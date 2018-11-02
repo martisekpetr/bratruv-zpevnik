@@ -26,204 +26,90 @@
 \usepackage{truncate} %for truncating song titles in ToC
 \usepackage{xfrac} % better fractions, E.G. 3/4 etc.
 \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
-
+\usepackage{needspace}
 
 % CHORDS & MUSIC
 \usepackage{gtrcrd} % chords above lyrics
 \usepackage{gchords} % chord diagrams
 \usepackage{musixtex} % typeset music notation
-\renewcommand{\crdfont}{\Large\bfseries\sffamily} % set font for chords
-
-% change to hybrid czech notation (B -> H, Bb -> Bb)
-\def\H{\B}
-\def\Hm{\Bm}
-\renewcommand{\crdB}[2][]{\CHORD[#1]{H}{#2}}
-\renewcommand{\crdBm}[2][]{\CHORD[#1]{Hmi}{#2}}
-\renewcommand{\crdBsm}[2][]{\CHORD[#1]{H$\sharp$mi}{#2}}
-
-% print minor chords as Xmi instead of Xm
-\renewcommand{\crdAm}[2][]{\CHORD[#1]{Ami}{#2}}
-\renewcommand{\crdCm}[2][]{\CHORD[#1]{Cmi}{#2}}
-\renewcommand{\crdDm}[2][]{\CHORD[#1]{Dmi}{#2}}
-\renewcommand{\crdEm}[2][]{\CHORD[#1]{Emi}{#2}}
-\renewcommand{\crdFm}[2][]{\CHORD[#1]{Fmi}{#2}}
-\renewcommand{\crdGm}[2][]{\CHORD[#1]{Gmi}{#2}}
-\renewcommand{\crdAbm}[2][]{\CHORD[#1]{A$\flat$mi}{#2}}
-\renewcommand{\crdBbm}[2][]{\CHORD[#1]{B$\flat$mi}{#2}}
-\renewcommand{\crdCbm}[2][]{\CHORD[#1]{C$\flat$mi}{#2}}
-\renewcommand{\crdDbm}[2][]{\CHORD[#1]{D$\flat$mi}{#2}}
-\renewcommand{\crdEbm}[2][]{\CHORD[#1]{E$\flat$mi}{#2}}
-\renewcommand{\crdFbm}[2][]{\CHORD[#1]{F$\flat$mi}{#2}}
-\renewcommand{\crdGbm}[2][]{\CHORD[#1]{G$\flat$mi}{#2}}
-\renewcommand{\crdAsm}[2][]{\CHORD[#1]{A$\sharp$mi}{#2}}
-\renewcommand{\crdCsm}[2][]{\CHORD[#1]{C$\sharp$mi}{#2}}
-\renewcommand{\crdDsm}[2][]{\CHORD[#1]{D$\sharp$mi}{#2}}
-\renewcommand{\crdEsm}[2][]{\CHORD[#1]{E$\sharp$mi}{#2}}
-\renewcommand{\crdFsm}[2][]{\CHORD[#1]{F$\sharp$mi}{#2}}
-\renewcommand{\crdGsm}[2][]{\CHORD[#1]{G$\sharp$mi}{#2}}
-
-
 
 % TABLE OF CONTENTS
 \usepackage{tableof} % for tagged table of contents
 \usepackage{etoc} % for customized typesetting of tocs
-
-%% introduce sectioning element `song'
+% introduce sectioning element `song'
 \etocsetlevel{song}{1}
-
-%% define line style for song
-\etocsetstyle {song}
-{}
+% define ToC line style for song
+% \etocsetstyle{<levelname>}{<start>}{<prefix>}{<contents>}{<finish>}
+\etocsetstyle{song}{} 
 {\leavevmode\leftskip 0pt\relax}
-{\hskip 4 pt{\etocname}\nobreak\hfill\nobreak
-\par}
-{}
+{\hskip 4pt{\etocname}\nobreak\hfill\nobreak\par}{}
 
-
-%%% -------------------- CUSTOM MACROS----------------------------------------
-
-\newcommand{\songTitle}[1]{
-	\begin{spacing}{1.5}{\Huge\sffamily\bfseries\MakeUppercase{#1}}\end{spacing}  
-	% add song name to ToC (truncate if necessary)
-	% \noindent\addcontentsline{lem}{song}{\truncate{0.5\textwidth}{#1}}
-	% for use of tagged toc with package tableof
-	\noindent\addcontentsline{toc}{song}{\truncate{0.5\textwidth}{#1}}
-}
-\renewcommand{\author}[1]{% typeset author name
-	{\hskip -10pt\LARGE\sffamily\slshape#1}
-}
-\renewcommand{\verse}[1]{% typeset verse number before lyrics
-	\hskip -20 pt \scalebox{.9}[1.0]{\LARGE\bfseries#1.}\hskip 4 pt 
-}
-\newcommand{\chorus}{% typeset `R:' before lyrics
-	\hskip -23 pt \textbf{R:}\hskip 5 pt
-}
-\newcommand{\revrpt}{% typeset beginning of repeat
-\raisebox{-.4ex}{\rule{.3ex}{2.5ex}\,\rule{.1ex}{2.5ex}}\raisebox{.2ex}{:}}
-\newcommand{\rpt}{% typeset end of repeat
-\raisebox{.2ex}{:}\raisebox{-.4ex}{\rule{.1ex}{2.5ex}\,\rule{.3ex}{2.5ex}}}
-\newcommand{\capo}[1]{% typeset capo placement
-	\vskip -10 pt 
-	\hfill \textsl{Capo #1}\\  
-}
-\newcommand\optVerse[4]{% typeset optional verse in parenthesis
-	\hskip #1
-	$\left(
-		\parbox{0.9\textwidth}{
-			\leftskip = #2
-			#4
-		}
-		\hskip #3
-	\right)$
-}
-\newcommand{\song}[5]{ % typeset song
-	\begin{minipage}[c]{\textwidth}\centering\songTitle{#1}\author{#2}\end{minipage} 
-	\begin{center} \leftskip=#3 \linespread{#4} \selectfont 
-		#5
-	\end{center} 
-	\clearpage
-}
-
-%%% -------------------- END OF CUSTOM MACROS ---------------------------
+% CUSTOM MACROS
+\input{macros.tex}
+\input{chords_adjustments.tex}
 
 
 \begin{document}
 
  %% ToC categorized
-\begin{center}
-{\hrulefill\textbf{\large\ \uppercase{Kategorie}\ }\hrulefill}
-\end{center}
-
-\setlength{\columnsep}{20pt}
+\categoryHeader{KATEGORIE}
 \begin{multicols}{2}
-\raggedcolumns
+  \setlength{\columnsep}{20pt}
+  \raggedcolumns
+  \categoryHeader{Zahraniční}
+    \categoryToc{Anglické}{anglicke}
+    \categoryToc{Slovenské}{slovenske}
+  
+  \categoryHeader{Písničkáři}
+    \categoryToc{Tomáš Klus}{klus}
+    \categoryToc{Karel Kryl}{kryl}
+    \categoryToc{Jaromír Nohavica}{nohavica}
+    \categoryToc{Karel Plíhal}{plihal}
+    
+  \categoryHeader{České kapely}
+    \categoryToc{Arakain, Brichta, BSP}{arakain, brichta, bsp}
+    \categoryToc{Buty}{buty}
+    \categoryToc{Chinaski}{chinaski}
+    \categoryToc{Kabát}{kabat}
+    \categoryToc{Lucie}{lucie}
+    \categoryToc{Olympic}{olympic}
+    \categoryToc{Žlutý pes}{zlutypes}
+    \categoryToc{ostatní}{ceskekapely}
 
-\begin{center}\hrulefill\textbf{\large\ {Zahraniční}\ }\hrulefill\end{center}
+  \categoryHeader{Folk, country}
+    \categoryToc{Spirituál kvintet, Nedvědi, Brontosauři}{spiritual, nedvedi, brontosauri}
+    \categoryToc{Čechomor}{cechomor}
+    \categoryToc{Robert Křesťan}{krestan}
+    \categoryToc{Pavel Lohonka Žalman}{zalman}
+    \categoryToc{Nerez, Zuzana Navarová}{nerez, navarova}
+    \categoryToc{ostatní}{folk, raduza}
 
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Anglické\vskip -5pt}}
-\nexttocwithtags*{anglicke}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Slovenské\vskip -5pt}}
-\nexttocwithtags*{slovenske}{}\tableofcontents
+  \categoryHeader{Čeští skladatelé}
+    \categoryToc{P. Hapka + M. Horáček}{hapka}
+    \categoryToc{J. Voskovec + J. Werich}{vw}
+    \categoryToc{Z. Svěrák + J. Uhlíř}{sverakuhlir, uhlirsverak}
+    \categoryToc{Ivan Mládek}{mladek}
+    \categoryToc{J. Suchý + J. Šlitr}{suchyslitr}
 
-\begin{center}\hrulefill\textbf{\large\ {Písničkáři}\ }\hrulefill\end{center}
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Jaromír Nohavica\vskip -5pt}}
-\nexttocwithtags*{nohavica}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Karel Plíhal\vskip -5pt}}
-\nexttocwithtags*{plihal}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Karel Kryl\vskip -5pt}}
-\nexttocwithtags*{kryl}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Tomáš Klus\vskip -5pt}}
-\nexttocwithtags*{klus}{}\tableofcontents
-
-\begin{center}\hrulefill\textbf{\large\ {České kapely}\ }\hrulefill\end{center}
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Chinaski\vskip -5pt}}
-\nexttocwithtags*{chinaski}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Buty\vskip -5pt}}
-\nexttocwithtags*{buty}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Lucie\vskip -5pt}}
-\nexttocwithtags*{lucie}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Žlutý pes\vskip -5pt}}
-\nexttocwithtags*{zlutypes}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Olympic\vskip -5pt}}
-\nexttocwithtags*{olympic}{}\tableofcontents
-\vskip 5pt
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Kabát\vskip -5pt}}
-\nexttocwithtags*{kabat}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Arakain, Brichta, BSP\vskip -5pt}}
-\nexttocwithtags*{arakain, brichta, bsp}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize ostatní\vskip -5pt}}
-\nexttocwithtags*{ceskekapely}{}\tableofcontents
-
-\begin{center}\hrulefill\textbf{\large\ {Folk, country}\ }\hrulefill\end{center}
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Spirituál kvintet, Nedvědi, Brontosauři\vskip -5pt}}
-\nexttocwithtags*{spiritual, nedvedi, brontosauri}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Čechomor\vskip -5pt}}
-\nexttocwithtags*{cechomor}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Robert Křesťan\vskip -5pt}}
-\nexttocwithtags*{krestan}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Pavel Lohonka Žalman\vskip -5pt}}
-\nexttocwithtags*{zalman}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Nerez, Zuzana Navarová\vskip -5pt}}
-\nexttocwithtags*{nerez, navarova}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize ostatní\vskip -5pt}}
-\nexttocwithtags*{folk, raduza}{}\tableofcontents
-
-\begin{center}\hrulefill\textbf{\large\ {Čeští skladatelé}\ }\hrulefill\end{center}
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize P. Hapka + M. Horáček\vskip -5pt}}
-\nexttocwithtags*{hapka}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize J. Voskovec + J. Werich\vskip -5pt}}
-\nexttocwithtags*{vw}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Z. Svěrák + J. Uhlíř\vskip -5pt}}
-\nexttocwithtags*{sverakuhlir, uhlirsverak}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Ivan Mládek\vskip -5pt}}
-\nexttocwithtags*{mladek}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize J. Suchý + J. Šlitr\vskip -5pt}}
-\nexttocwithtags*{suchyslitr}{}\tableofcontents
-
-
-\begin{center}\hrulefill\textbf{\large\ {Filmové, muzikálové}\ }\hrulefill\end{center}
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize Ivan Hlas\vskip -5pt}}
-\nexttocwithtags*{hlas}{}\tableofcontents
-\etocmulticolstyle[1]{\vskip -10pt \textbf{\normalsize ostatní\vskip -5pt}}
-\nexttocwithtags*{filmove}{}\tableofcontents
-
+  \categoryHeader{Filmové, muzikálové}
+    \categoryToc{Ivan Hlas}{hlas}
+    \categoryToc{ostatní}{filmove}
 \end{multicols}
 \clearpage
-
-
 
 %% full list of songs
 \etocruledstyle{\textbf{\large\ \uppercase{Obsah}\ }}
 \nexttocwithtags{}{}\tableofcontents
 \clearpage
 
-
-
-
+%% document settings
 \Large % do not remove! Otherwise titles will get messed up -_-
 \fontsize{14pt}{2.9ex} \selectfont
 \setlength{\parskip}{2ex} % vertical space between paragraphs
 \crdheight=2.5 ex
+
+
+%% --------------  SONGS --------------------
 
 \toftagthis{chinaski}
 \song{1970}{Chinaski}{20 pt}{1}{
@@ -7059,12 +6945,14 @@ Na to nelze říci než \uv{Jinak to nebude.} \rpt \\
 }
 
 
-
 % <DO NOT REMOVE!> 
-%% This hack adresses the bug of tableof package (i think, before it was ok): if \clearpage is right before end{document}, it breaks (wont even typeset)
+%% This hack addresses the bug of tableof package (I think, before it was ok):
+%% if \clearpage is right before end{document}, it breaks (wont even typeset)
 ~\\
 % </DO NOT REMOVE> 
 
-\addtocontents{lem}{\protect\end{multicols}} %end of multicols in toc, needs to be after last title
+
+% end of multicols in toc, needs to be after last title
+\addtocontents{lem}{\protect\end{multicols}} 
 
 \end{document}
