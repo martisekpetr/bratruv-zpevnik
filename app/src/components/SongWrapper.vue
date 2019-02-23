@@ -5,6 +5,7 @@
       right: previousSong,
     }"
     column
+    fill-height
   >
     <button
       v-show="!isPreviousDisabled"
