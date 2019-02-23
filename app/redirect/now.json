@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "alias": "www.bratruvzpevnik.cz",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "status": 301,
+      "headers": { "Location": "https://bratruvzpevnik.cz/$1" }
+    }
+  ]
+}
