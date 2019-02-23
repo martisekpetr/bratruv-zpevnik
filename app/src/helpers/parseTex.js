@@ -53,6 +53,8 @@ export const parseTexCommand = (el, song) => {
       return `<span class="verse" verse="${parseChildren(el.arguments[0], song).replace(/\s+/g, '&nbsp;')}:&nbsp;"></span>`
     case 'chorus':
       return '<span class="chorus"></span>'
+    case 'chorusAlt':
+      return `<span class="chorus" label="${parseChildren(el.arguments[0], song).replace(/\s+/g, '&nbsp;')}"></span>`
     case 'rec':
       return `<span class="recitativ-head"></span><span class="recitativ-body">${parseChildren(el.arguments[0], song)}</span>`
 
