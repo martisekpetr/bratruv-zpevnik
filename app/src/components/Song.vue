@@ -137,6 +137,10 @@ h2 {
   /* display: inline-block; */
 }
 
+.song >>> .chorus.alt::after {
+  content: attr(label)"\00a0";
+}
+
 .song >>> .recitativ-head {
   position: relative;
 }
