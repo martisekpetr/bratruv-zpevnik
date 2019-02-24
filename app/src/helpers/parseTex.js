@@ -152,7 +152,7 @@ export const parseTexCommand = (el, song) => {
     case 'revrpt':
       return '<span class="rev-rpt">&#119046;</span>'
     case 'Fermataup':
-      return '<span class="chord-wrapper"><span class="chord">&#119056;</span></span>'
+      return '<span class="chord-wrapper"><span class="chord fermata">&#119056;</span></span>'
     default:
       // console.log(el)
       return ''

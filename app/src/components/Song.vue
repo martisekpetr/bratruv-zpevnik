@@ -112,6 +112,11 @@ h2 {
   /* display: inline-block; */
 }
 
+.song >>> .fermata {
+  font-size: x-large;
+  transform: translateY(50%);
+}
+
 .song >>> .verse {
   position: relative;
 }
