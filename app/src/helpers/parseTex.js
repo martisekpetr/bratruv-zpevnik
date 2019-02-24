@@ -47,6 +47,9 @@ export const parseTexCommand = (el, song) => {
     // manually ignored
     case 'noexport':
       return ''
+    // only web
+    case 'noprint':
+      return parseChildren(el.arguments[0], song)
 
     // song sections
     case 'verse':
