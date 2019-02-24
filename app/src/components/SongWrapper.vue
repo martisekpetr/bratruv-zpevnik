@@ -120,17 +120,53 @@ export default {
   border: none;
   background-color: transparent;
   position: fixed;
-  padding: 1vw;
-  top: 50vh;
-  transform: translateY(-50%);
+  top: 0;
+  bottom: 0;
   outline: none;
+  transition: all 0.3s;
+}
+
+.next-button:hover,
+.prev-button:hover,
+.next-button:hover::after,
+.prev-button:hover::after
+{
+  background-color: lightgrey;
 }
 
 .next-button {
   right:0;
+  padding-right: 1vw;
 }
 .prev-button {
-  left:0;
+  padding-left: 1vw;
+  left: 0;
+}
+
+.prev-button::after {
+  content: "";
+  height: 100%;
+  width: 2vw;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  transition: all 0.3s;
+}
+
+.next-button::after {
+  content: "";
+  height: 100%;
+  width: 2vw;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  transition: all 0.3s;
 }
 
 </style>

@@ -135,10 +135,7 @@ export default {
 }
 
 .v-toolbar__side-icon {
+  z-index: 2;
   /* margin-bottom: 0; */
-}
-.navigation {
-  /* position: fixed; */
-  /* z-index: 10; */
 }
 </style>
