@@ -216,6 +216,9 @@ export const parseAllSongs = (response) => {
       song.tags = currentTags
       song.index = songs.length
       currentTags = []
+      if (song.title === 'Sloní hřbitovy') {
+        console.log(songOrTag.arguments[4].latex)
+      }
 
       const textFragments = []
       textFragments.push('<p>')
