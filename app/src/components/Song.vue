@@ -9,13 +9,15 @@
       <h3 v-if="capo" class="capo">
         Capo {{ capo }}
       </h3>
-      <div class="song-text" v-html="text" />
+      <div class="song-text" v-html="songText" />
     </div>
   </v-container>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import { transposeChord } from '../helpers/transposition'
+
 export default {
   name: 'Song',
   props: {
@@ -44,9 +46,13 @@ export default {
     return {}
   },
   computed: {
+    songText () {
+      return this.text.replace(/%CHORD_([^%]+)%/g, transposeChord(this.transposition))
+    },
     ...mapGetters([
       'shouldShowChords',
       'fontSize',
+      'transposition',
     ]),
   },
 }
