@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 import Toolbar from './components/Toolbar'
 
 export default {
@@ -21,10 +21,16 @@ export default {
       'isDark',
     ]),
   },
-  created() {
+  created () {
     this.loadSongs()
+    this.$router.afterEach(() => {
+      this.transposeReset()
+    })
   },
   methods: {
+    ...mapMutations([
+      'transposeReset',
+    ]),
     ...mapActions([
       'loadSongs',
     ]),

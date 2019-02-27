@@ -52,6 +52,31 @@
             />
           </v-list-tile-content>
         </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-layout
+              align-center
+              justify-space-between
+              style="width: 100%;"
+            >
+              <v-btn
+                flat
+                icon
+                @click="transposeDown"
+              >
+                <v-icon>exposure_neg_1</v-icon>
+              </v-btn>
+              <div>Transpozice: {{ transposition }}</div>
+              <v-btn
+                flat
+                icon
+                @click="transposeUp"
+              >
+                <v-icon>exposure_plus_1</v-icon>
+              </v-btn>
+            </v-layout>
+          </v-list-tile-content>
+        </v-list-tile>
         <v-list-tile @click="">
           <v-list-tile-action>
             <v-switch v-model="showChords" color="primary" />
@@ -112,12 +137,15 @@ export default {
         this.switchDarkTheme(value)
       },
     },
+    transposition () { return this.$store.getters.transposition },
   },
   methods: {
     ...mapMutations([
       'switchShowChords',
       'changeFontSize',
       'switchDarkTheme',
+      'transposeUp',
+      'transposeDown',
     ]),
     increaseFontSize: function () {
       this.changeFontSize(this.fontSize + 0.1)

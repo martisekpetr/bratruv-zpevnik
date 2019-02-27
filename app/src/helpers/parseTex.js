@@ -5,10 +5,6 @@ const getArgValue = (el, arg = 0) => el.arguments[arg].latex[0].text
 let ignoreNext = false
 let hskipWaiting = false
 
-const formatChord = (raw) => {
-  return raw.replace('s', '&#9839;').replace('b', '&#9837;')
-}
-
 const parseChildren = (el, song) => el.latex.map(e => parseTexElement(e, song)).join('')
 
 const formatExtension = ext => {
@@ -35,7 +31,7 @@ const parseChordExtension = (el, song) => {
   const extensionRaw = parseChildren(el.arguments[0], song)
   const [ ext, bass ] = extensionRaw.split('/')
 
-  return `${formatExtension(ext)}${bass ? `/${bass}` : ''}`
+  return `${formatExtension(ext)}${bass ? `/%CHORD_${bass}%` : ''}`
 }
 
 export const parseTexCommand = (el, song) => {
@@ -83,6 +79,8 @@ export const parseTexCommand = (el, song) => {
     case 'Gb':
     case 'Ab':
     case 'Bb':
+      const chordName = `%CHORD_${el.name}%` + parseChordExtension(el, song)
+      return `<span class="chord-wrapper"><span class="chord">${chordName}</span></span>`
     case 'Cm':
     case 'Dm':
     case 'Em':
@@ -104,8 +102,8 @@ export const parseTexCommand = (el, song) => {
     case 'Gbm':
     case 'Abm':
     case 'Bbm':
-      const chordName = formatChord(el.name) + parseChordExtension(el, song)
-      return `<span class="chord-wrapper"><span class="chord">${chordName}</span></span>`
+      const chordNameM = `%CHORD_${el.name.substr(0, el.name.length - 1)}%m` + parseChordExtension(el, song)
+      return `<span class="chord-wrapper"><span class="chord">${chordNameM}</span></span>`
     case 'CHORD':
       return `<span class="chord-wrapper"><span class="chord">${parseChildren(el.arguments[0], song)}</span></span>`
 
@@ -145,7 +143,8 @@ export const parseTexCommand = (el, song) => {
     case 'ldots':
       return '...'
     case 'sharp':
-      return '&#9839;'
+      // return '&#9839;'
+      return 's'
     case '%':
       return '%'
     case 'times':
@@ -219,10 +218,6 @@ export const parseAllSongs = (response) => {
       song.tags = currentTags
       song.index = songs.length
       currentTags = []
-      if (song.title === 'Sloní hřbitovy') {
-        console.log(songOrTag.arguments[4].latex)
-      }
-
       const textFragments = []
       textFragments.push('<p>')
       songOrTag.arguments[4].latex.forEach(el => {
