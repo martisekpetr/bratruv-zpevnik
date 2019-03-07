@@ -24,7 +24,7 @@
 
 % `R:' before lyrics
 \newcommand{\chorus}{
-  \hskip -23pt \textbf{R:}\hskip 5pt
+  \hskip -23pt \textbf{\Large R:}\hskip 5pt
 }
 
 \newcommand{\chorusAlt}[2]{
@@ -105,3 +105,28 @@
 \newcommand{\noexport}[1]{#1}
 
 \newcommand{\noprint}[1]{}
+
+
+\newcommand{\songWithTranslation}[4]{
+  #2
+  \clearpage
+  #4
+  \clearpage
+}
+
+
+\newcommand{\originalVersion}[5]{
+  \begin{minipage}[c]{\textwidth}
+    \centering
+    \textbf{Originál (#2 -- #1):}\\
+  \end{minipage} 
+  \begin{center}
+    \large
+    \leftskip=#3
+    \linespread{#4}\selectfont 
+    #5
+    \Large
+    \leftskip 0pt
+  \end{center} 
+\clearpage
+}
