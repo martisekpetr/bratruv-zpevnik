@@ -55,6 +55,7 @@ export default {
   mounted () {
     const self = this
     window.addEventListener('keydown', function (event) {
+      event.preventDefault()
       switch (event.key) {
         case 'ArrowLeft':
           event.preventDefault()
