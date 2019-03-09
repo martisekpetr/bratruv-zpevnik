@@ -25,7 +25,7 @@
         arrow_forward_ios
       </v-icon>
     </button>
-    <Song v-bind="songs[currentSongIndex]" />
+    <Song :song="songs[currentSongIndex]" />
   </v-layout>
 </template>
 

@@ -198,33 +198,59 @@ export const parseTexElement = (el, song) => {
   }
 }
 
+const parseSong = (songElement) => {
+  const song = {}
+  song.title = parseChildren(songElement.arguments[0], song)
+  song.author = getArgValue(songElement, 1)
+  const textFragments = []
+  textFragments.push('<p>')
+  songElement.arguments[4].latex.forEach(el => {
+    textFragments.push(parseTexElement(el, song))
+  })
+  textFragments.push('</p>')
+  song.text = textFragments.join('')
+  return song
+}
+
 export const parseAllSongs = (response) => {
   const { status, value: parsed } = latexParser.parse(response.data)
   if (!status) {
     throw new Error('Parsing LaTeX failed')
   }
   const document = parsed.find(el => el.name === 'document')
-  const songsAndTags = document.latex.filter(el => el.name === 'toftagthis' || el.name === 'song')
+  const songsAndTags = document.latex.filter(el => (
+    el.name === 'toftagthis' ||
+    el.name === 'song' ||
+    el.name === 'songWithTranslation'
+  ))
   const songs = []
 
   let currentTags = []
   songsAndTags.forEach(songOrTag => {
     if (songOrTag.name === 'toftagthis') {
       currentTags = getArgValue(songOrTag).split(',').map(s => s.trim())
-    } else {
+    } else if (songOrTag.name === 'songWithTranslation') {
+      const versions = [
+        Object.freeze({
+          language: getArgValue(songOrTag, 0),
+          song: parseSong(songOrTag.arguments[1].latex.find(el => el.name === 'song')),
+        }),
+        Object.freeze({
+          language: getArgValue(songOrTag, 2),
+          song: parseSong(songOrTag.arguments[3].latex.find(el => el.name === 'originalVersion')),
+        }),
+      ]
       const song = {}
-      song.title = parseChildren(songOrTag.arguments[0], song)
-      song.author = getArgValue(songOrTag, 1)
-      song.tags = currentTags
       song.index = songs.length
+      song.tags = currentTags
+      song.versions = versions
       currentTags = []
-      const textFragments = []
-      textFragments.push('<p>')
-      songOrTag.arguments[4].latex.forEach(el => {
-        textFragments.push(parseTexElement(el, song))
-      })
-      textFragments.push('</p>')
-      song.text = textFragments.join('')
+      songs.push(song)
+    } else {
+      const song = parseSong(songOrTag)
+      song.index = songs.length
+      song.tags = currentTags
+      currentTags = []
       songs.push(song)
     }
   })

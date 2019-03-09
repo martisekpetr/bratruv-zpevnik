@@ -4,11 +4,26 @@
       :class="['song', {'no-chords': !shouldShowChords }]"
       :style="{ fontSize: fontSize + 'rem'}"
     >
-      <h1>{{ title }}</h1>
-      <h2>{{ author }}</h2>
-      <h3 v-if="capo" class="capo">
-        Capo {{ capo }}
-      </h3>
+      <h1>
+        {{ songData.title }}
+      </h1>
+      <h2>{{ songData.author }}</h2>
+      <div class="top-right">
+        <h3 v-if="songData.capo" class="capo">
+          Capo {{ songData.capo }}
+        </h3>
+        <button
+          v-if="hasVersions"
+          class="lang_button"
+          @click="flip"
+        >
+          <country-flag
+            :country="flagCountry"
+            size="normal"
+          />
+        </button>
+      </div>
+
       <div class="song-text" v-html="songText" />
     </div>
   </v-container>
@@ -16,38 +31,48 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import CountryFlag from 'vue-country-flag'
+
 import { transposeChord } from '../helpers/transposition'
 
 export default {
   name: 'Song',
+  components: {
+    CountryFlag,
+  },
   props: {
-    title: {
-      type: String,
-      default: '',
-    },
-    author: {
-      type: String,
-      default: '',
-    },
-    text: {
-      type: String,
-      default: '',
-    },
-    capo: {
-      type: String,
-      default: '',
-    },
-    tags: {
-      type: Array,
-      default: function () { return [] },
+    song: {
+      type: Object,
+      default: function () { return {} },
     },
   },
   data: function () {
-    return {}
+    return {
+      currentVersionIndex: 0,
+      flip: () => {
+        this.currentVersionIndex = (this.currentVersionIndex + 1) % this.song.versions.length
+      },
+    }
   },
   computed: {
+    hasVersions () {
+      return this.song.versions
+    },
+    songData () {
+      return this.hasVersions ? this.song.versions[this.currentVersionIndex].song : this.song
+    },
     songText () {
-      return this.text.replace(/%CHORD_([^%]+)%/g, transposeChord(this.transposition))
+      return this.songData.text && this.songData.text.replace(/%CHORD_([^%]+)%/g, transposeChord(this.transposition))
+    },
+    currentLanguage () {
+      return this.hasVersions ? this.song.versions[(this.currentVersionIndex + 1) % 2].language : ''
+    },
+    flagCountry () {
+      const map = {
+        czech: 'cz',
+        english: 'gb',
+      }
+      return map[this.currentLanguage]
     },
     ...mapGetters([
       'shouldShowChords',
@@ -87,11 +112,24 @@ h2 {
   /* font-size: 1.2rem; */
   line-height: normal;
 }
-.capo {
+
+.top-right {
   position: absolute;
-  top: -2.2rem;
-  right: 2rem;
+  top: -2.8rem;
+  right: 1.2rem;
   margin: 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.lang_button {
+  height: 30px;
+  margin-left: 1rem;
+  outline: none;
+}
+
+.flag {
+  transform-origin: top;
 }
 
 .song.no-chords >>> .chord-wrapper,

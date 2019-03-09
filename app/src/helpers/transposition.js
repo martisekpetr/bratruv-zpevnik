@@ -29,7 +29,6 @@ const formatChord = (raw) => {
 }
 
 export const transposeChord = transposition => (match, chord) => {
-  console.log(chord)
   if (transposition === 0) {
     return formatChord(chord)
   }

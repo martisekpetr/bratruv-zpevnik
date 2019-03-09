@@ -34,10 +34,20 @@ export default {
     filteredSongs: state => state.searchKeyword && state.searchKeyword.length > 0
       ? state.songs
         .filter(song => (
-          song.title.toLowerCase().indexOf(state.searchKeyword) >= 0 ||
-          song.author.toLowerCase().indexOf(state.searchKeyword) >= 0
+          song.versions
+            ? (
+              song.versions[0].song.title.toLowerCase().indexOf(state.searchKeyword) >= 0 ||
+              song.versions[0].song.author.toLowerCase().indexOf(state.searchKeyword) >= 0 ||
+              song.versions[1].song.title.toLowerCase().indexOf(state.searchKeyword) >= 0 ||
+              song.versions[1].song.author.toLowerCase().indexOf(state.searchKeyword) >= 0
+            )
+            : (
+              (song.title && song.title.toLowerCase().indexOf(state.searchKeyword) >= 0) ||
+              (song.author && song.author.toLowerCase().indexOf(state.searchKeyword) >= 0)
+            )
         ))
-      : state.songs,
+        .map(song => song.versions ? { ...song.versions[0].song, index: song.index } : song)
+      : state.songs.map(song => song.versions ? { ...song.versions[0].song, index: song.index } : song),
     searchKeyword: state => state.searchKeyword,
     isLoaded: state => state.isLoaded,
   },
