@@ -33,7 +33,15 @@
             Stáhnout PDF
           </v-list-tile-content>
         </v-list-tile>
-
+        <v-list-tile @click="">
+          <v-list-tile-action>
+            <v-icon>help_outline</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content @click.stop="dialog = true">
+            <v-list-tile-title>O zpěvníku</v-list-tile-title>
+            <!-- <v-list-tile-sub-title>Notify when receiving invites</v-list-tile-sub-title> -->
+          </v-list-tile-content>
+        </v-list-tile>
         <v-divider />
         <v-subheader>
           Nastavení
@@ -99,6 +107,40 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
+    <v-dialog
+      v-model="dialog"
+      width="500"
+    >
+      <v-card>
+        <v-card-title
+          class="headline grey lighten-2"
+          primary-title
+        >
+          O zpěvníku
+        </v-card-title>
+
+        <v-card-text>
+          <h4>Verze</h4>
+          5.0.0
+          <h4>Autor</h4>
+          Petr "Bratr" Martišek<br />
+          <a href="mailto:martisekpetr@gmail.com">martisekpetr@gmail.com</a>
+        </v-card-text>
+
+        <v-divider />
+
+        <v-card-actions>
+          <v-spacer />
+          <v-btn
+            color="primary"
+            flat
+            @click="dialog=false"
+          >
+            Zavřít
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </span>
 </template>
 
@@ -110,6 +152,7 @@ export default {
   name: 'Toolbar',
   data: () => ({
     sidebar: false,
+    dialog: false,
     zpevnikPdf,
   }),
   computed: {
