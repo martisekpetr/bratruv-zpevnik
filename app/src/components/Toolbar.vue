@@ -3,6 +3,20 @@
     <span>
       <v-toolbar-side-icon @click="sidebar = !sidebar" />
     </span>
+    <div>
+      <v-text-field
+        v-model="searchKeyword"
+        class="search"
+        prepend-inner-icon="search"
+        label="Search"
+        single-line
+        hide-details
+        clearable
+      />
+      <div v-if="searchKeyword && searchKeyword.length" class="toclist" >
+        <TocList />
+      </div>
+    </div>
     <v-navigation-drawer
       v-model="sidebar"
       fixed
@@ -147,6 +161,7 @@
 <script>
 import { mapMutations } from 'vuex'
 import zpevnikPdf from '../assets/zpevnik.pdf'
+import TocList from './TocList'
 
 export default {
   name: 'Toolbar',
@@ -155,6 +170,7 @@ export default {
     dialog: false,
     zpevnikPdf,
   }),
+  components: { TocList },
   computed: {
     showChords: {
       get () {
@@ -178,6 +194,14 @@ export default {
       },
       set (value) {
         this.switchDarkTheme(value)
+      },
+    },
+    searchKeyword: {
+      get () {
+        return this.$store.getters.searchKeyword
+      },
+      set (value) {
+        this.$store.commit('setSearchKeyword', value)
       },
     },
     transposition () { return this.$store.getters.transposition },
@@ -209,4 +233,38 @@ export default {
   z-index: 2;
   /* margin-bottom: 0; */
 }
+.navigation {
+  display: flex;
+  padding-right: 20px;
+}
+.search {
+  padding-top: 5px;
+}
+.search .v-input__control {
+  width: 0;
+  max-width: 0;
+  transition: all 0.2s;
+}
+
+.search.v-input--is-focused .v-input__control {
+  width: 100%;
+  max-width: 100%;
+}
+.toclist {
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  height: 0;
+  max-height: 50vh;
+  overflow-y: auto;
+  z-index: 2;
+  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.25);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.search.v-input--is-focused + .toclist {
+  height: auto;
+}
+
 </style>
