@@ -22,6 +22,20 @@
   \hskip 2pt 
 }
 
+\newcommand{\nochord}[3][]{}
+% \newcommand{\cchord}[3][]{\CHORD[#1]{#2}{#3}}
+\let\printedchord\CHORD
+
+\newcommand{\DoNotPrintChordsByDefault}{
+  \let\CHORD\nochord
+}
+% verse number before lyrics
+\newcommand{\printchords}[1]{%
+  \def\CHORD{\printedchord}%
+  #1
+  \def\CHORD{\nochord}
+}
+
 % `R:' before lyrics
 \newcommand{\chorus}{
   \hskip -23pt \textbf{\Large R:}\hskip 5pt

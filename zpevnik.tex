@@ -108,6 +108,9 @@
 \setlength{\parskip}{2ex} % vertical space between paragraphs
 \crdheight=2.5ex
 
+% typesetting chords on their own will not print them;
+% they need to be in the printchords macro
+% \DoNotPrintChordsByDefault
 
 %% --------------  SONGS --------------------
 
@@ -117,12 +120,15 @@
 \setlength{\parskip}{1.5ex} % vertical space between paragraphs
 \crdheight=2.0ex
 \vskip 5pt
-\verse{1}\A[sus2]{}Nevim jestli je to \Hm[7]{}znát, možná by bylo lepší \A[sus2/C$\sharp$]{}lhát,\\
+\verse{1}%
+\printchords{%
+\A[sus2]{}Nevim jestli je to \Hm[7]{}znát, možná by bylo lepší \A[sus2/C$\sharp$]{}lhát,\\
 jsem silnej ročník \D{}sedmdesát, tak začni počí\A[sus2]{}tat.\\
-Nechci tu hloupě vzpomínat, koho taky dneska zajímá\\
-silnej ročník sedmdesát, tak začni počítat.\\
-Tenkrát tu bejval jinej stát a já byl blbej na kvadrát,\\
-jsem silnej ročník \D{}sedmdesát, třeba napří\E{}klad.
+
+Nechci tu hloupě vzpomí\Hm[7]{}nat, koho taky dneska zají\A[sus2/C$\sharp$]{}má\\
+silnej ročník \D{}sedmdesát, tak začni počí\A[sus2]{}tat.\\
+Tenkrát tu bejval jinej \Hm[7]{}stát a já byl blbej na kva\A[sus2/C$\sharp$]{}drát,\\
+jsem silnej ročník \D{}sedmdesát, třeba napří\E{}klad.}
 
 \chorus{}\E{}Naši mi vždycky říka\Fsm{}li, jen nehas co tě nepá\D{}lí,\\
 jakej pán takovej \A{}krám.\\
