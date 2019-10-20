@@ -254,7 +254,7 @@ export default {
   position: absolute;
   width: 90%;
   left: 5%;
-  height: 0;
+  /* height: 0; */
   max-height: 50vh;
   overflow-y: auto;
   z-index: 2;
