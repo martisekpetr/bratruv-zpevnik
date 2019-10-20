@@ -45,6 +45,7 @@ export const parseTexCommand = (el, song) => {
       return ''
     // only web
     case 'noprint':
+    case 'printchords':
       return parseChildren(el.arguments[0], song)
 
     // song sections
