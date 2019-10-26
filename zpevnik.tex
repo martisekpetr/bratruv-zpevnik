@@ -110,7 +110,7 @@
 
 % typesetting chords on their own will not print them;
 % they need to be in the printchords macro
-% \DoNotPrintChordsByDefault
+\DoNotPrintChordsByDefault
 
 %% --------------  SONGS --------------------
 
@@ -123,29 +123,34 @@
 \verse{1}%
 \printchords{%
 \A[sus2]{}Nevim jestli je to \Hm[7]{}znát, možná by bylo lepší \A[sus2/C$\sharp$]{}lhát,\\
-jsem silnej ročník \D{}sedmdesát, tak začni počí\A[sus2]{}tat.\\
+jsem silnej ročník \D{}sedmdesát, tak začni počí\A[sus2]{}tat.}\\
 
 Nechci tu hloupě vzpomí\Hm[7]{}nat, koho taky dneska zají\A[sus2/C$\sharp$]{}má\\
 silnej ročník \D{}sedmdesát, tak začni počí\A[sus2]{}tat.\\
 Tenkrát tu bejval jinej \Hm[7]{}stát a já byl blbej na kva\A[sus2/C$\sharp$]{}drát,\\
-jsem silnej ročník \D{}sedmdesát, třeba napří\E{}klad.}
+\printchords{jsem silnej ročník \D{}sedmdesát, třeba napří\E{}klad.}
 
-\chorus{}\E{}Naši mi vždycky říka\Fsm{}li, jen nehas co tě nepá\D{}lí,\\
-jakej pán takovej \A{}krám.\\
-Naši mi vždycky říkali, co můžeš sleduj z povzdálí\\
-a nikdy nebojuj sám.
+\chorus{}%
+\printchords{%
+\E{}Naši mi vždycky říka\Fsm{}li, jen nehas co tě nepá\D{}lí,\\
+jakej pán takovej \A{}krám.\\}
+\E{}Naši mi vždycky říka\Fsm{}li, co můžeš sleduj z povzdá\D{}lí\\
+a nikdy nebojuj \A{}sám.
 
-\verse{2}Nevim jestli je to znát, možná by bylo lepší lhát,\\
-jsem silnej ročník sedmdesát, nemohl jsem si vybírat.\\
-Tak mi to přestaň vyčítat, naříkat co jsem za případ,\\
-jsem silnej ročník sedmdesát a možná, že jsem rád.\\
-\textbf{R:} \ldots a nikdy nebojuj \E{}sám.
+\verse{2}\A[sus2]Nevim jestli je to \Hm[7]{}znát, možná by bylo lepší \A[sus2/C$\sharp$]{}lhát,\\
+jsem silnej ročník \D{}sedmdesát, nemohl jsem si vybí\A[sus2]rat.\\
+Tak mi to přestaň vyčí\Hm[7]{}tat, naříkat co jsem za pří\A[sus2/C$\sharp$]{}pad,\\
+jsem silnej ročník \D{}sedmdesát a možná, že jsem \E{}rád.\\
+\textbf{R:} \ldots \printchords{a nikdy nebojuj \E{}sám.}
 
-\verse{*}Čas \D{}pádí, čas letí, těžko ta \E{}léta vrátíš zpět\\
+\verse{*}%
+\printchords{%
+Čas \D{}pádí, čas letí, těžko ta \E{}léta vrátíš zpět\\
 a tak i \A{}Husákovy děti dospěly \H{}do Kristových let.\\
-Čas pádí, čas letí a je to zvláštní svět\\
-a tak i Husákovy děti dospěly do Kristových let.\\
-Čas pádí, čas letí.
+}
+Čas \D{}pádí, čas letí a \E{}je to zvláštní svět\\
+a tak i \A{}Husákovy děti dospěly \H{}do Kristových let.\\
+Čas \D{}pádí, čas letí.
 }
 
 
@@ -154,41 +159,50 @@ a tak i Husákovy děti dospěly do Kristových let.\\
 \song{Africa}{Toto}{20pt}{1}{
 \capo{2}
 \medskip
+\printchords{
 \G{} \hskip 1.3em \Fsm{}\hskip 2.7em \Hm{}\\
 \verse{1}\A{}I hear the drums \Csm[7]{}echoin' to\Fsm{}night, but \A[/E]{}she hears only\\
 \G{}whispers of some \D{}quiet conver\D[maj7/F$\sharp$]{}sation.\hskip 2em \G{} \hskip 1.3em \Fsm{}\hskip 2.7em\Hm{}
+}
 
-She's coming in, twelve-thirty flight, moonlit wings\\
-reflect the stars that guide me towards salvation.
+\A{}She's coming \Csm[7]{}in, twelve-thirty \Fsm{}flight, \A[/E]{}moonlit wings\\
+re\G{}flect the stars that \D{}guide me towards sal\D[maj7/F$\sharp$]{}vation.\hskip 2em \G{} \hskip 1.3em \Fsm{}\hskip 2.7em\Hm{}
 
-I stopped an old man along the way, hoping to find\\ 
-some old forgotten words or ancient melodies.
+\A{}I stopped an \Csm[7]{}old man along the \Fsm{}way, \A[/E]{}hoping to find\\ 
+some \G{}old forgotten \D{}words or ancient \D[maj7/F$\sharp$]{}melodies.\hskip 2em \G{} \hskip 1.3em \Fsm{}\hskip 2.7em\Hm{}
 
 \A{}He turned to \Csm[7]{}me as if to \Fsm{}say:\\
+\printchords{%
 \uv{Hurry boy, it's \G{}waiting there for you!} \Fsm{}\hskip 2.7em \Hm{}
+}
 
+\printchords{%
 \chorus{}\Em{}It's gonna take a \C{}lot to drag me \G{}away from \D{}you,\\
-\scalebox{0.95}[1]{there's nothing that a hundred men or more could ever do.}\\
-I bless the rains down in Africa.\\
+}
+\scalebox{0.95}[1]{\Em{}there's nothing that a \C{}hundred men or \G{}more could ever \D{}do.}\\
+\Em{}I bless the \C{}rains down in \G{}Afri\D{}ca.\\
+\printchords{%
 \Em{}Gonna take some \C{}time to do the\\
 \G{}things we never \Hm{}had.\hskip 0.7em \D{}\hskip 1.3em \Em{}\hskip 2.2em \D[/F$\sharp$]{}\hskip 2.5em \G{}\hskip 1.3em \Fsm{}\hskip 2.7em \Hm{}
+}
 
-\verse{2}The wild dogs cry out in the night, as they grow restless\\
-longing for some solitary company.
+\verse{2}\A{}The wild dogs \Csm[7]{}cry out in the \Fsm{}night, as \A[/E]{}they grow restless\\
+\G{}longing for some \D{}solitary \D[maj7/F$\sharp$]{}company.\hskip 2em \G{} \hskip 1.3em \Fsm{}\hskip 2.7em\Hm{}
 \clearpage
-I know that I must do what's right, sure as Kilimanjaro\\
-rises like Olympus above the Serengeti
+\A{}I know that \Csm[7]{}I must do what's \Fsm{}right, sure as \A[/E]{}Kilimanjaro\\
+\G{}rises like O\D{}lympus above the \D[maj7/F$\sharp$]{}Serengeti\hskip 2em \G{} \hskip 1.3em \Fsm{}\hskip 2.7em\Hm{}
 
-I seek to cure what's deep inside,\\
-frightened of this thing that I've become.\\
+\A{}I seek to \Csm[7]{}cure what's deep in\Fsm{}side,\\
+frightened of this \G{}thing that I've become.\Fsm{}\hskip 2.7em \Hm{}\\
 \textbf{R:}
 
-\uv{Hurry boy, she's waiting there for you!} 
+\uv{Hurry boy, she's \G{}waiting there for you!} \Fsm{}\hskip 2.7em \Hm{}
 
-\chorus{}It's gonna take a lot to drag me away from you,\\
-\scalebox{0.95}[1]{there's nothing that a hundred men or more could ever do}\\
-\revrpt{} I bless the rains down in Africa. \rpt{} $^{4\times}$\\
-Gonna take some time to do the things we never had.\\
+\chorus{}\Em{}It's gonna take a \C{}lot to drag me a\G{}way from \D{}you,\\
+\scalebox{0.95}[1]{\Em{}there's nothing that a \C{}hundred men or \G{}more could ever \D{}do}\\
+\revrpt{} \Em{}I bless the \C{}rains down in \G{}Afri\D{}ca. \rpt{} $^{4\times}$\\
+\Em{}Gonna take some \C{}time to do the\\
+\G{}things we never \Hm{}had.\hskip 0.7em \D{}\hskip 1.3em \Em{}\hskip 2.2em \D[/F$\sharp$]{}\hskip 2.5em \G{}\hskip 1.3em \Fsm{}\hskip 2.7em \Hm{}
 }
 
 
