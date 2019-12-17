@@ -3,7 +3,10 @@
     <span>
       <v-toolbar-side-icon @click="sidebar = !sidebar" />
     </span>
-    <div>
+    <button @click="randomSong">
+      <v-icon>shuffle</v-icon>
+    </button>
+  <div>
       <v-text-field
         v-model="searchKeyword"
         class="search"
@@ -205,6 +208,7 @@ export default {
       },
     },
     transposition () { return this.$store.getters.transposition },
+    songsCount () { return this.$store.getters.songsCount },
   },
   methods: {
     ...mapMutations([
@@ -219,6 +223,12 @@ export default {
     },
     decreaseFontSize: function () {
       this.changeFontSize(this.fontSize - 0.1)
+    },
+    randomSong: function () {
+      this.$router.push({
+        name: 'song',
+        params: { id: Math.floor(Math.random() * this.songsCount) },
+      })
     },
   },
 }
@@ -238,6 +248,7 @@ export default {
   padding-right: 20px;
 }
 .search {
+  margin-left: 10px;
   padding-top: 5px;
 }
 .search .v-input__control {

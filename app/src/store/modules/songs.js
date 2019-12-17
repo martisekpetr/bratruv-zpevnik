@@ -50,5 +50,6 @@ export default {
       : state.songs.map(song => song.versions ? { ...song.versions[0].song, index: song.index } : song),
     searchKeyword: state => state.searchKeyword,
     isLoaded: state => state.isLoaded,
+    songsCount: state => state.songs.length,
   },
 }
