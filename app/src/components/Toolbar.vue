@@ -41,7 +41,7 @@
 
         <v-list-tile
           key="pdf"
-          :href="zpevnikPdf"
+          href="https://github.com/martisekpetr/bratruv-zpevnik/raw/master/zpevnik.pdf"
         >
           <v-list-tile-action>
             <v-icon>save_alt</v-icon>
@@ -163,7 +163,6 @@
 
 <script>
 import { mapMutations } from 'vuex'
-import zpevnikPdf from '../assets/zpevnik.pdf'
 import TocList from './TocList'
 
 export default {
@@ -171,7 +170,6 @@ export default {
   data: () => ({
     sidebar: false,
     dialog: false,
-    zpevnikPdf,
   }),
   components: { TocList },
   computed: {
