@@ -124,8 +124,9 @@ export default {
   border: none;
   background-color: transparent;
   position: fixed;
-  top: 0;
-  bottom: 0;
+  padding: 0 1vw;
+  top: 10vh;
+  bottom: 10vh;
   outline: none;
   transition: all 0.3s;
 }
@@ -140,37 +141,13 @@ export default {
 
 .next-button {
   right:0;
-  padding-right: 1vw;
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 100%;
 }
 .prev-button {
-  padding-left: 1vw;
   left: 0;
-}
-
-.prev-button::after {
-  content: "";
-  height: 100%;
-  width: 2vw;
-  background-color: transparent;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 50%;
-  transition: all 0.3s;
-}
-
-.next-button::after {
-  content: "";
-  height: 100%;
-  width: 2vw;
-  background-color: transparent;
-  position: absolute;
-  top: 0;
-  right: 100%;
-  border-top-left-radius: 50%;
-  border-bottom-left-radius: 50%;
-  transition: all 0.3s;
+  border-top-right-radius: 100%;
+  border-bottom-right-radius: 100%;
 }
 
 </style>
