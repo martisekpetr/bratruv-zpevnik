@@ -2,6 +2,9 @@
   "version": 2,
   "name": "bratruvzpevnik",
   "alias": "bratruvzpevnik.cz",
+  "github": {
+    "silent": true
+  },
   "builds": [{ "src": "package.json", "use": "@now/static-build" }],
   "routes": [
     { "src": "^/js/(.*)", "dest": "/js/$1" },
