@@ -110,7 +110,7 @@
 
 % typesetting chords on their own will not print them;
 % they need to be in the printchords macro
-\DoNotPrintChordsByDefault
+% \DoNotPrintChordsByDefault
 
 %% --------------  SONGS --------------------
 
@@ -122,7 +122,7 @@
 \vskip 5pt
 \verse{1}%
 \printchords{%
-\A[sus2]{}Nevim jestli je to \Hm[7]{}znát, možná by bylo lepší \A[sus2/C$\sharp$]{}lhát,\\
+\A[sus2]{}Nevím jestli je to \Hm[7]{}znát, možná by bylo lepší \A[sus2/C$\sharp$]{}lhát,\\
 jsem silnej ročník \D{}sedmdesát, tak začni počí\A[sus2]{}tat.}\\
 
 Nechci tu hloupě vzpomí\Hm[7]{}nat, koho taky dneska zají\A[sus2/C$\sharp$]{}má\\
@@ -208,75 +208,88 @@ frightened of this \G{}thing that I've become.\Fsm{}\hskip 2.7em \Hm{}\\
 
 \toftagthis{plihal}
 \song{Akordy}{Karel Plíhal}{40pt}{1}{
+\printchords{%
 \verse{1}\E{}Nejkrásnější akord bude \A[maj]{}Amaj,\\
 \E{}prstíky se při něm nepo\C{}lámaj',\\
 \A{}pomohl mi \H[7]{}k pěkné holce\Gsm{} s absolutním \Csm{}sluchem,\\
 \A{}každý večer \C{}naplníme \E{}balón horkým \A[maj]{}vzduchem.
+}
 
-\verse{2}{}V stratosféře hrajeme si Amaj,\\
-i když se nám naši známí chlámaj'.\\
-Potom, když jsme samým štěstím opilí až namol,\\
-stačí místo Amaj jenom zahrát třeba \Am{}Amoll. 
+\verse{2}{}\E{}V stratosféře hrajeme si \A[maj]{}Amaj,\\
+\E{}i když se nám naši známí \C{}chlámaj'.\\
+\A{}Potom, když jsme \H[7]{}samým štěstím \Gsm{}opilí až \Csm{}namol,\\
+\A{}stačí místo \C{}Amaj jenom \E{}zahrát třeba \printchords{\Am{}Amoll.}
 
-\verse{3}{}Amoll všechny city rázem zchladí,\\
-dopadneme na zem na pozadí.\\
-Lehneme si do trávy a budem koukat vzhůru,\\
-dokud nás čas nenaladí aspoň do A\A{}duru. 
+\verse{3}{}\E{}Amoll všechny city rázem \Am{}zchladí,\\
+\E{}dopadneme na zem na po\C{}zadí.\\
+\A{}Lehneme si \H[7]{}do trávy a \Gsm{}budem koukat \Csm{}vzhůru,\\
+\A{}dokud nás čas \C{}nenaladí \E{}aspoň do \printchords{A\A{}duru.}
 
+\printchords{%
 \verse{*}{}\A{}Od Adur je jenom kousek k \A[maj]{}Amaj,\\
 \Fsm{}proto všem těm, \Fsm[/F]{}co se v lásce \Fsm[/E]{}zklamaj', \Fsm[/D$\sharp$]{}\\
 \A{}vyždímejte \H[7]{}kapesníky\Gsm{} a nebuďte \Csm{}smutní,\\
 \A{}každá holka \C{}pro někoho \E{}má sluch abso\A[maj]{}lutní. 
+}
 \clearpage
-\verse{4}{}V každém akord zní, aniž to tuší,\\
-zkusme tedy nebýt k sobě hluší.\\
-Celej svět je jeden velkej koncert lidských duší,\\
-jenže jako Amaj nic tak srdce nerozbuší. 
+\verse{4}{}\E{}V každém akord zní, aniž to \A[maj]{}tuší,\\
+\E{}zkusme tedy nebýt k sobě \C{}hluší.\\
+\A{}Celej svět je \H[7]{}jeden velkej \Gsm{}koncert lidských \Csm{}duší,\\
+\A{}jenže jako \C{}Amaj nic tak \E{}srdce neroz\A[maj]{}buší. 
 
+\printchords{%
 \E{}Pro ty, co to Amaj v lásce \A[maj]{}nemaj',\\
 \E{}moh' bych zkusit zahrát třeba \C[maj]{}Cmaj\ldots{}
-
+}
 }
 
 \toftagthis{anglicke}
 \song{Always Look on the Bright Side of Life}{Monty Python}{15pt}{1}{
+\printchords{%
 \verse{1}{}\D[13]{}Some \C[maj]{}things in life are \Cm[13]{}bad,\\
 they can \G[maj]{}really make you \C[maj]{}mad,\\
 \D[add9]{}other things just \Am[11]{}make you swear and \G[maj13]{}curse.\\
 When you're \C[maj]{}chewing on life's \Cm[13]{}gristle,\\
 don't \G[maj]{}grumble, give a \E[7]{}whistle,\\
 and \A[13]{}this'll help things turn out for the \D[13]{}best! And\ldots{}
+}
 \smallskip
 
+\printchords{%
 \chorus{}\G{}Always \Em{}look on the \Am[7]{}bright \D[7]{}side of \G{}life!\Em{}\hskip 2.2em \Am[7]{}\hskip 2.8em \D[7]{}\\
-Always look on the light side of life!
+}
+\G{}Always \Em{}look on the \Am[7]{}light \D[7]{}side of \G{}life!\Em{}\hskip 2.2em \Am[7]{}\hskip 2.8em \D[7]{}
+
+\printchords{%
 
 \verse{2}{}\textls[-25]{If \Am[7]{}life seems jolly \D[7]{}rotten, there's \G{}something you've for\Em{}gotten}\\
 and \Am[7]{}that's to laugh and \D[7]{}smile and dance and \G{}sing.\\
 When you're \Am[7]{}feeling in the \D[7]{}dumps, \G{}don't be, silly \Em{}chumps,\\
 \Am[7]{}just purse your lips and whistle -- that's the \D[7]{}thing.
+}
 
-\chorus{}And always look on the bright side of life!\\
-Always look on the light side of life!
+\chorus{}And \G{}always \Em{}look on the \Am[7]{}bright \D[7]{}side of \G{}life!\Em{}\hskip 2.2em \Am[7]{}\hskip 2.8em \D[7]{}\\
+\G{}Always \Em{}look on the \Am[7]{}light \D[7]{}side of \G{}life!\Em{}\hskip 2.2em \Am[7]{}\hskip 2.8em \D[7]{}
+
 \clearpage
-\verse{3}{}For life is quite absurd and death's the final word,\\
-you must always face the curtain with a bow.\\
-Forget about your sin -- give the audience a grin,\\
-enjoy it -- it's your last chance anyhow.
+\verse{3}{}For \Am[7]{}life is quite ab\D[7]{}surd and \G{}death's the final \Em{}word,\\
+you must \Am[7]{}always face the \D[7]{}curtain with a \G{}bow.\\
+For\Am[7]{}get about your \D[7]{}sin -- give the \G{}audience a \Em{}grin,\\
+en\Am[7]{}joy it -- it's your last chance any\D[7]{}how.
 
-\chorus{}So always look on the bright side of death!\\
-Just before you draw your terminal breath!
+\chorus{}So \G{}always \Em{}look on the \Am[7]{}bright \D[7]{}side of \G{}death!\Em{}\hskip 2.2em \Am[7]{}\hskip 2.8em \D[7]{}\\
+\G{}Just be\Em{}fore you \Am[7]{}draw your \D[7]{}terminal \G{}breath!\Em{}\hskip 2.2em \Am[7]{}\hskip 2.8em \D[7]{}
 
-\verse{4}{}Life's a piece of shit when you look at it,\\
-life's a laugh and death's a joke, it's true.\\
-You'll see it's all a show, keep 'em laughing as you go,\\
-just remember that the last laugh is on you.
+\verse{4}{}\Am[7]{}Life's a piece of \D[7]{}shit \G{}when you look at \Em{}it,\\
+\Am[7]{}life's a laugh and \D[7]{}death's a joke, it's \G{}true.\\
+You'll \Am[7]{}see it's all a \D[7]{}show, keep 'em \G{}laughing as you \Em{}go,\\
+just re\Am[7]{}member that the last laugh is on \D[7]{}you.
 
-\chorus{}And always look on the bright side of life!\\
-Always look on the right side of life!\\
+\chorus{}And \G{}always \Em{}look on the \Am[7]{}bright \D[7]{}side of \G{}life!\Em{}\hskip 2.2em \Am[7]{}\hskip 2.8em \D[7]{}\\
+\G{}Always \Em{}look on the \Am[7]{}right \D[7]{}side of \G{}life!\Em{}\hskip 2.2em \Am[7]{}\hskip 2.8em \D[7]{}\\
 \emph{ (Come on guys, cheer up!)}\\
+\printchords{\A{}Always \Fsm{}look on the \Hm{}bright \E[7]{}side of \A{}life!\Fsm{} \hskip 2.5em  \Hm[7]{}\hskip 2.9em  \E[7]{}}\\
 \A{}Always \Fsm{}look on the \Hm{}bright \E[7]{}side of \A{}life!\Fsm{} \hskip 2.5em  \Hm[7]{}\hskip 2.9em  \E[7]{}\\
-Always look on the bright side of life!\\
 \ldots
 \vfill
 \noexport{
@@ -306,58 +319,65 @@ Always look on the bright side of life!\\
 \song{Amerika}{Lucie}{70pt}{0.96}{
 \setlength{\parskip}{1.5ex} % vertical space between paragraphs
 \crdheight=2.2ex
+\printchords{%
 \verse{1}{}\C{}Nandej mi \G{}do hlavy tvý \Dm{}brouky\\
 \Dm{}a bůh nám seber bezna\C{}děj.\\
-V duši zbylo světlo z jedný holky,\\
-tak mi teď za to vynadej. 
+}
+\C{}V duši zbylo \G{}světlo z jedný \Dm{}holky,\\
+\Dm{}tak mi teď za to vyna\C{}dej. 
 
-\verse{2}{}Zima a promarněný touhy,\\
-do vrásek stromů padá déšť.\\
-Zbejvaj' roky asi ne moc dlouhý,\\
+\verse{2}{}\C{}Zima a \G{}promarněný \Dm{}touhy,\\
+\Dm{}do vrásek stromů padá \C{}déšť.\\
+\C{}Zbejvaj' roky \G{}asi ne moc \Dm{}dlouhý,\\
+\printchords{%
 \Dm{}do vlasů mi zabrou\F{}kej -- pá papá \C{}pá.\\
 \revrpt{} Pá \C[/H]{}pá pá \Am{}pááá, pá papá \C{}pá \rpt
+}
 
-\verse{3}{}Tvoje oči jenom žhavý tóny,\\
-dotek slunce zapadá.\\
-Horkej vítr rozezní mý zvony,\\
-do vlasů ti zabrouká -- pá papá pá.\\
-\revrpt{} Pá pá pá pááá, pá papá pá \rpt 
+\verse{3}{}\C{}Tvoje oči \G{}jenom žhavý \Dm{}tóny,\\
+\Dm{}dotek slunce zapa\C{}dá.\\
+\C{}Horkej vítr \G{}rozezní mý \Dm{}zvony,\\
+\Dm{}do vlasů ti zabrou\F{}ká -- pá papá \C{}pá.\\
+\revrpt{} Pá \C[/H]{}pá pá \Am{}pááá, pá papá \C{}pá \rpt
 
-\verse{4}{}Na obloze křídla tažnejch ptáků,\\
-tak už na svý bráchy zavolej.\\
-Na tváře ti padaj' slzy z mraků\\
-a bůh nám sebral beznaděj.
+\verse{4}{}\C{}Na obloze \G{}křídla tažnejch \Dm{}ptáků,\\
+\Dm{}tak už na svý bráchy zavo\C{}lej.\\
+\C{}Na tváře ti \G{}padaj' slzy z \Dm{}mraků\\
+\Dm{}a bůh nám sebral bezna\C{}děj.
 
-\verse{5}{}V duši zbylo světlo z jedný holky,\\
-do vrásek stromů padá déšť.\\
-Poslední dny, hodiny a roky,\\
-do vlasů ti zabrouká -- pá papá pá.\\
-\revrpt{} Pá pá pá pááá, pá papá pá \rpt\\
+\verse{5}{}\C{}V duši zbylo \G{}světlo z jedný \Dm{}holky,\\
+\Dm{}do vrásek stromů padá \C{}déšť.\\
+\C{}Poslední dny, \G{}hodiny a \Dm{}roky,\\
+\Dm{}do vlasů ti zabrou\F{}ká -- pá papá \C{}pá.\\
+\revrpt{} Pá \C[/H]{}pá pá \Am{}pááá, pá papá \C{}pá \rpt
 }
 
 
 \toftagthis{kryl}
 \song{Anděl}{Karel Kryl}{30pt}{1}{
-\verse{1}{}\G{}Z rozmláce\Em{}nýho kostela,\G{} v krabici s \D[7]{}kusem mýdla,\\
-přinesl jsem si anděla, polámali mu křídla.\\
-Díval se na mě oddaně, já měl jsem trochu trému,\\
-tak vtiskl jsem mu do dlaně lahvičku od parfému. 
+\printchords{%
+\verse{1}{}\G{}Z rozmláce\Em{}nýho kostela,\G{} v krabici s \D[7]{}kusem mýdla,}\\
+\G{}přinesl \Em{}jsem si anděla, \G{}poláma\D[7]{}li mu křídla.\\
+\G{}Díval se \Em{}na mě oddaně, \G{}já měl jsem \D[7]{}trochu trému,\\
+\G{}tak vtiskl \Em{}jsem mu do dlaně \G{}lahvičku \D[7]{}od parfému. 
 
+\printchords{%
 \chorus{}\G{}A proto, \Em{}prosím, věř mi,\G{} chtěl jsem ho \D[7]{}žádat,\\
 \G{}aby mi \Em{}mezi dveřmi\G{} pomohl \D[7]{}hádat,\\
 \G{}co mě čeká\Em{} \hskip 2.3em \D[7]{}a nemi\G{}ne,\\
 \G{}co mě čeká\Em{} \hskip 2.3em \D[7]{}a nemi\G{}ne.
+}
 
-\verse{2}{}Pak hlídali jsme oblohu, pozorujíce ptáky,\\
-debatujíce o Bohu a hraní na vojáky.\\
-Do tváře jsem mu neviděl, pokoušel se ji schovat,\\
-to asi ptákům záviděl, že mohou poletovat.\\
+\verse{2}{}\G{}Pak hlída\Em{}li jsme oblohu, \G{}pozoru\D[7]{}jíce ptáky,\\
+\G{}debatu\Em{}jíce o Bohu \G{}a hraní \D[7]{}na vojáky.\\
+\G{}Do tváře \Em{}jsem mu neviděl, \G{}pokoušel \D[7]{}se ji schovat,\\
+\G{}to asi \Em{}ptákům záviděl, \G{}že mohou \D[7]{}poletovat.\\
 \textbf{R:} 
 
-\verse{3}{}Když novinky mi sděloval u okna do ložnice,\\
-já křídla jsem mu ukoval z mosazný nábojnice.\\
-A tak jsem pozbyl anděla, on oknem odletěl mi,\\
-však přítel prý mi udělá novýho z mojí helmy.\\
+\verse{3}{}\G{}Když novin\Em{}ky mi sděloval \G{}u okna \D[7]{}do ložnice,\\
+\G{}já křídla \Em{}jsem mu ukoval \G{}z mosazný \D[7]{}nábojnice.\\
+\G{}A tak jsem \Em{}pozbyl anděla, \G{}on oknem \D[7]{}odletěl mi,\\
+\G{}však přítel \Em{}prý mi udělá \G{}novýho z \D[7]{}mojí helmy.\\
 \textbf{R: }
 }
 
@@ -366,6 +386,7 @@ však přítel prý mi udělá novýho z mojí helmy.\\
 \song{Babička mary}{J. Ježek/V+W}{65pt}{1}{
 \setlength{\parskip}{1.5ex} % vertical space between paragraphs
 \crdheight=2.2ex
+\printchords{%
 \verse{1}{}\Am{}Štěchovická laguna když dřímá\\
 v zadumaném stínu Kordylér,\\
 \Dm{}pirát zkrva\Am{}venou šerpu ždímá,\\
@@ -390,65 +411,66 @@ pirát zděšen tvář si zakryje,\\
 nad hlavou \C{}točí lasem.\\
 Stoletá \C{}Mary, babička \D[7]{}Mary, ta zkrotí \G[7]{}křepce hřebce,\\
 ať chce, či ne\C{}chce.\E[7]{} 
+}
 
 ~\\
 \leftskip 5pt
 \large
 \begin{minipage}[t]{0.49\textwidth}
-\verse{2}{}Žádné zuby, z jelenice sukně,\\
+\verse{2}{}\Am{}Žádné zuby, z jelenice sukně,\\
 ale za to tvrdé bicepsy,\\
-Mary má vždy slivovici v putně,\\
-Toma Mixe strčí do kapsy.\\
-Klika cvakla, v krčmě dveře letí\\
+\Dm{}Mary má vždy \Am{}slivovici v putně,\\
+\H[7]{}Toma Mixe strčí do kap\E{}sy.\\
+\Am{}Klika cvakla, v krčmě dveře letí\\
 a babička vchází do dveří,\\
-\uv{Pintu ginu, lumpové prokletí!}\\
-bezzubou dásní zaláteří. 
+\uv{\Dm{}Pintu ginu, \Am{}lumpové prokletí!}\\
+\Dm{}bezzubou dás\E[7]{}ní zaláte\Am{}ří. 
 
-\uv{Vypiju to jen ve stoje,\\
-jdu do volebního boje,\\
-zřím zas město drahý,\\
-jedu volit do Prahy.} 
+\uv{\G[7]{}Vypiju to jen ve \C{}stoje,\\
+\G[7]{}jdu do volebního \C{}boje,\\
+\G[7]{}zřím zas \C{}město drahý,\\
+\F{}jedu volit \Fs[dim]{}do Pra\E{}hy.} 
 
-Dopila a aby se neřeklo,\\
+\Am{}Dopila a aby se neřeklo,\\
 putykáře změní v mrtvolu,\\
-za zády má štěchovické peklo\\
-s šlajsnou svatojánských atolů.\\
+\Dm{}za zády má \Am{}štěchovické peklo\\
+\H[7]{}s šlajsnou svatojánských ato\E{}lů.\G[7]{}\\
 
-\hskip 5pt \chorus{}Mary, babička Mary,\\ 
-pádluje bez námahy\\
-po proudu až do Prahy.\\
-Stoletá Mary, babička Mary,\\
-jde do volebního boje\\
-za kovboje.\\
+\hskip 5pt \chorus{}\C{}Mary, babička \D[7]{}Mary,\\ 
+pádluje \G[7]{}bez námahy\\
+po proudu \C{}až do Prahy.\\
+Stoletá \C{}Mary, babička \D[7]{}Mary,\\
+jde do vo\G[7]{}lebního boje\\
+za kovbo\C{}je.\E[7]{}\\
 \end{minipage}
 \hskip 5pt
 \begin{minipage}[t]{0.46 \textwidth}
 \rightskip -15pt
-\verse{3}Ledva v Praze kotvu vyhodila,\\
+\verse{3}\Am{}Ledva v Praze kotvu vyhodila,\\
 pro babičku nastal hrozný čas,\\
-neboť hned každá strana tvrdila,\\
-že jí náleží babiččin hlas.\\
-Malá stejně jako velká strana\\
+\Dm{}neboť hned kaž\Am{}dá strana tvrdila,\\
+\H[7]{}že jí náleží babiččin \E{}hlas.\\
+\Am{}Malá stejně jako velká strana\\
 psala, že bude mít o hlas víc,\\
-že ta druhá strana je nahraná,\\
-oni že maj' hlas ze Štěchovic.
+\Dm{}že ta druhá \Am{}strana je nahraná,\\
+\Dm{}oni že maj' \E[7]{}hlas ze Štěcho\Am{}vic.
 
-Stoletý věk prý nevadí,\\
-na předáka je to mládí,\\
-ze všech nejvíce,\\
-volala ji Polnice.
+\G[7]{}Stoletý věk prý ne\C{}vadí,\\
+\G[7]{}na předáka je to \C{}mládí,\\
+\G[7]{}ze všech \C{}nejvíce,\\
+\F{}volala ji \Fs[dim]{}Polni\E{}ce.
 
-\scalebox{.98}[1.0]{\textls[-20]{Tak babičku, pro kterou vždy byla}}\\
+\scalebox{.98}[1.0]{\textls[-20]{\Am{}Tak babičku, pro kterou vždy byla}}\\
 válka s lidojedy legrace,\\
-tu babičku za pár dní zabila\\
-volební agitace.\\
+\Dm{}tu babičku \Am{}za pár dní zabila\\
+\H[7]{}volební agita\E{}ce.\G[7]{}\\
 
-\hskip 3pt \chorus{}Mary, bojovná Mary,\\
-už nesedává v sedle,\\
-ve volbách byla vedle.\\
-Stoletou Mary, babičku Mary,\\
-volbama zabitou\\
-vzal k sobě Manitou.\\
+\hskip 3pt \chorus{}\C{}Mary, bojovná \D[7]{}Mary,\\
+už nese\G[7]{}dává v sedle,\\
+ve volbách \C{}byla vedle.\\
+Stoletou \C{}Mary, babičku \D[7]{}Mary,\\
+volbama \G[7]{}zabitou\\
+vzal k sobě Mani\C{}tou.\\
 \end{minipage}
 }
 
