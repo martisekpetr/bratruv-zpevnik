@@ -5,7 +5,10 @@ const getArgValue = (el, arg = 0) => el.arguments[arg].latex[0].text
 let ignoreNext = false
 let hskipWaiting = false
 
-const parseChildren = (el, song) => el.latex.map(e => parseTexElement(e, song)).join('')
+const parseChildren = (el, song) => {
+  if (!el || !Array.isArray(el.latex)) return ''
+  return el.latex.map(e => parseTexElement(e, song)).join('')
+}
 
 const formatExtension = ext => {
   switch (ext.trim()) {
