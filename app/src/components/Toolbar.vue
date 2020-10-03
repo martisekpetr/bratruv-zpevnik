@@ -6,7 +6,7 @@
     <button @click="randomSong">
       <v-icon>shuffle</v-icon>
     </button>
-  <div>
+    <div>
       <v-text-field
         v-model="searchKeyword"
         class="search"
@@ -16,7 +16,7 @@
         hide-details
         clearable
       />
-      <div v-if="searchKeyword && searchKeyword.length" class="toclist" >
+      <div v-if="searchKeyword && searchKeyword.length" class="toclist">
         <TocList />
       </div>
     </div>
@@ -140,8 +140,10 @@
           <h4>Verze</h4>
           5.0.0
           <h4>Autor</h4>
-          Petr "Bratr" Martišek<br />
-          <a href="mailto:martisekpetr@gmail.com">martisekpetr@gmail.com</a>
+          Petr "Bratr" Martišek<br>
+          <a href="mailto:martisekpetr@gmail.com">
+            martisekpetr@gmail.com
+          </a>
         </v-card-text>
 
         <v-divider />
@@ -164,14 +166,15 @@
 <script>
 import { mapMutations } from 'vuex'
 import TocList from './TocList'
+import { debounce } from 'debounce'
 
 export default {
   name: 'Toolbar',
+  components: { TocList },
   data: () => ({
     sidebar: false,
     dialog: false,
   }),
-  components: { TocList },
   computed: {
     showChords: {
       get () {
@@ -201,9 +204,9 @@ export default {
       get () {
         return this.$store.getters.searchKeyword
       },
-      set (value) {
+      set: debounce(function (value) {
         this.$store.commit('setSearchKeyword', value)
-      },
+      }, 300),
     },
     transposition () { return this.$store.getters.transposition },
     songsCount () { return this.$store.getters.songsCount },

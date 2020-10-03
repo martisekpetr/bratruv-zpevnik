@@ -1,6 +1,25 @@
 import axios from 'axios'
 import { parseAllSongs } from '../../helpers/parseTex'
 
+const normalizeString = (str) => str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+
+const matchSongVersionToKeyword = (song, keyword) => {
+  return (song.title && normalizeString(song.title).indexOf(keyword) >= 0) ||
+  (song.author && normalizeString(song.author).indexOf(keyword) >= 0)
+}
+
+const matchSongToKeyword = (song, keyword) => {
+  if (!song.versions) {
+    return matchSongVersionToKeyword(song, keyword)
+  }
+  for (const i in song.versions) {
+    if (matchSongVersionToKeyword(song.versions[i].song, keyword)) {
+      return true
+    }
+  }
+  return false
+}
+
 export default {
   state: {
     songs: [],
@@ -13,7 +32,7 @@ export default {
       state.isLoaded = true
     },
     setSearchKeyword (state, payload) {
-      state.searchKeyword = payload ? payload.toLowerCase() : payload
+      state.searchKeyword = payload
     },
   },
   actions: {
@@ -31,23 +50,12 @@ export default {
   },
   getters: {
     songs: state => state.songs,
-    filteredSongs: state => state.searchKeyword && state.searchKeyword.length > 0
-      ? state.songs
-        .filter(song => (
-          song.versions
-            ? (
-              song.versions[0].song.title.toLowerCase().indexOf(state.searchKeyword) >= 0 ||
-              song.versions[0].song.author.toLowerCase().indexOf(state.searchKeyword) >= 0 ||
-              song.versions[1].song.title.toLowerCase().indexOf(state.searchKeyword) >= 0 ||
-              song.versions[1].song.author.toLowerCase().indexOf(state.searchKeyword) >= 0
-            )
-            : (
-              (song.title && song.title.toLowerCase().indexOf(state.searchKeyword) >= 0) ||
-              (song.author && song.author.toLowerCase().indexOf(state.searchKeyword) >= 0)
-            )
-        ))
-        .map(song => song.versions ? { ...song.versions[0].song, index: song.index } : song)
-      : state.songs.map(song => song.versions ? { ...song.versions[0].song, index: song.index } : song),
+    filteredSongs: state => (
+      state.searchKeyword && state.searchKeyword.length
+        ? state.songs
+          .filter(song => matchSongToKeyword(song, normalizeString(state.searchKeyword)))
+        : state.songs
+    ).map(song => song.versions ? { ...song.versions[0].song, index: song.index } : song),
     searchKeyword: state => state.searchKeyword,
     isLoaded: state => state.isLoaded,
     songsCount: state => state.songs.length,
