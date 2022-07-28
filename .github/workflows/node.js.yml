@@ -12,6 +12,9 @@ on:
 
 jobs:
   build:
+    defaults:
+      run:
+        working-directory: app
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
