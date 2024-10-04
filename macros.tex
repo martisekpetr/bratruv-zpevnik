@@ -29,11 +29,18 @@
 \newcommand{\DoNotPrintChordsByDefault}{
   \let\CHORD\nochord
 }
-% verse number before lyrics
+% chords within this section will be printed to pdf
 \newcommand{\printchords}[1]{%
   \def\CHORD{\printedchord}%
-  #1
-  \def\CHORD{\nochord}
+  #1%
+  \def\CHORD{\nochord}%
+}
+
+% chords within this section will be printed to pdf
+\newcommand{\hidechords}[1]{%
+  \def\CHORD{\nochord}%
+  #1%
+  \def\CHORD{\printedchord}%
 }
 
 % `R:' before lyrics
